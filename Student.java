@@ -1,21 +1,31 @@
 import java.time.LocalDate;
-import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
-
-public class Student {
+class Student{
     private String name;
-    private LocalDate dateOfBirth;
+    private LocalDate dateofbirth;
 
-    public Student(String name, LocalDate dateOfBirth) {
-        this.name = name;
-        this.dateOfBirth = dateOfBirth;
+    public Student(String name ,String dateofbirth)
+    {
+        this.name=name;
+        DateTimeFormatter formatter =DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.dateofbirth =LocalDate.parse(dateofbirth,formatter);
     }
-
-    public String getName() {
-        return name;
+    public void displaystudentname()
+    {
+        System.out.println("Student Name: " + name);
     }
+    public void displayage()
+    {
+        LocalDate currentDate = LocalDate.now();
+        long age  = ChronoUnit.YEARS.between(this.dateofbirth ,currentDate );
+        System.out.println("Age of Student is: " + age + " Years");
+    }
+    public static void main(String[] args) {
+        Student stu1 = new Student("Hazra","2004-12-04");
+        stu1.displayage();
+        stu1.displaystudentname();
 
-    public int getAge() {
-        return Period.between(dateOfBirth, LocalDate.now()).getYears();
     }
 }
