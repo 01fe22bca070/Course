@@ -1,6 +1,8 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
+import java.util.Map;
 
 class Student{
     private String name;
@@ -23,9 +25,8 @@ class Student{
         System.out.println("Age of Student is: " + age + " Years");
     }
     public static void main(String[] args) {
-        Student stu1 = new Student("Hazra","2004-12-04");
-        stu1.displayage();
-        stu1.displaystudentname();
-
+        Student stu = new Student("Aisha","2003-12-27");
+        stu.displayage();
+        stu.displaystudentname();
     }
 }
